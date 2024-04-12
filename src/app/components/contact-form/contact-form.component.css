@@ -130,7 +130,7 @@ input:focus {
 
 .btn-cancel,
 .btn-save,
-.btn-disable {
+.btn-disabled {
   width: 196px;
   height: 41px;
   padding: 6px, 12px;
@@ -156,7 +156,7 @@ input:focus {
   cursor: pointer;
 }
 
-.btn-disable {
+.btn-disabled {
   background-color: #adb5bd;
   cursor: not-allowed;
 }

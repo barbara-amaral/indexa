@@ -1,23 +1,34 @@
 import { Component } from '@angular/core';
 import { ContainerComponent } from '../container/container.component';
 import { DividerComponent } from '../divider/divider.component';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.css',
-  imports: [ContainerComponent, DividerComponent, ReactiveFormsModule],
+  imports: [
+    ContainerComponent,
+    DividerComponent,
+    ReactiveFormsModule,
+    CommonModule,
+  ],
 })
 export class ContactFormComponent {
   contactForm!: FormGroup;
 
   constructor() {
     this.contactForm = new FormGroup({
-      name: new FormControl(''),
-      phone: new FormControl(''),
-      email: new FormControl(''),
+      name: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       birthday: new FormControl(''),
       social: new FormControl(''),
       observations: new FormControl(''),
@@ -25,7 +36,9 @@ export class ContactFormComponent {
   }
 
   saveContact() {
-    console.log(this.contactForm.value);
+    if (this.contactForm.valid) {
+      console.log(this.contactForm.value);
+    }
   }
 
   cancel() {

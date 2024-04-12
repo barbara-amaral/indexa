@@ -18,6 +18,10 @@
       formControlName="name"
     />
 
+    @if(contactForm.get('name')?.errors && contactForm.get('name')?.touched) {
+    <div class="error-message">Campo Obrigatório</div>
+    }
+
     <label for="phone">Telefone</label>
     <input
       type="text"
@@ -26,6 +30,10 @@
       formControlName="phone"
     />
 
+    @if(contactForm.get('phone')?.errors && contactForm.get('phone')?.touched) {
+    <div class="error-message">Campo Obrigatório</div>
+    }
+
     <label for="email">Email</label>
     <input
       type="email"
@@ -33,6 +41,14 @@
       placeholder="Digite o email do contato"
       formControlName="email"
     />
+
+    @if(contactForm.get('email')?.errors?.['required'] &&
+    contactForm.get('email')?.touched) {
+    <div class="error-message">Campo Obrigatório</div>
+    } @if(contactForm.get('email')?.errors?.['email'] &&
+    contactForm.get('email')?.touched) {
+    <div class="error-message">Formato de e-mail inválido</div>
+    }
 
     <app-divider></app-divider>
 
@@ -66,7 +82,13 @@
       <button (click)="cancel()" class="btn-cancel" type="button">
         Cancelar
       </button>
-      <button class="btn-save" type="submit">Salvar contato</button>
+      <button
+        [disabled]="contactForm.invalid"
+        [ngClass]="contactForm.valid ? 'btn-save' : 'btn-disabled'"
+        type="submit"
+      >
+        Salvar contato
+      </button>
     </section>
   </form>
 </app-container>
