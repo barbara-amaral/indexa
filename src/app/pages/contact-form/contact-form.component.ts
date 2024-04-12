@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ContainerComponent } from '../container/container.component';
-import { DividerComponent } from '../divider/divider.component';
+import { ContainerComponent } from '../../components/container/container.component';
+import { DividerComponent } from '../../components/divider/divider.component';
 import {
   FormControl,
   FormGroup,
@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-contact-form',
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
     DividerComponent,
     ReactiveFormsModule,
     CommonModule,
+    RouterLink,
   ],
 })
 export class ContactFormComponent {

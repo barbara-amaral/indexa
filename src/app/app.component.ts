@@ -1,20 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ContainerComponent } from './components/container/container.component';
-import { HeaderComponent } from './components/header/header.component';
-import { DividerComponent } from './components/divider/divider.component';
-import { ContactComponent } from './components/contact/contact.component';
 
-interface Contact {
-  id: number;
-  name: string;
-  phone: string;
-}
-
-import addressBook from './address-book.json';
-import { FormsModule } from '@angular/forms';
-import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { ContactFormComponent } from './pages/contact-form/contact-form.component';
+import { ContactListComponent } from './pages/contact-list/contact-list.component';
 
 @Component({
   selector: 'app-root',
@@ -23,38 +12,9 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
   styleUrl: './app.component.css',
   imports: [
     CommonModule,
-    RouterOutlet,
-    ContainerComponent,
-    HeaderComponent,
-    DividerComponent,
-    ContactComponent,
-    FormsModule,
     ContactFormComponent,
+    ContactListComponent,
+    RouterOutlet,
   ],
 })
-export class AppComponent {
-  alphabet: string = 'abcdefghijklmnopqrstuvwxyz';
-  contacts: Contact[] = addressBook;
-
-  filterByText: string = '';
-
-  filterContactsByText(): Contact[] {
-    if (!this.filterByText) {
-      return this.contacts;
-    }
-
-    return this.contacts.filter((contact) => {
-      return contact.name
-        .toLocaleLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .includes(this.filterByText.toLocaleLowerCase());
-    });
-  }
-
-  filterContactsByFirstLetter(letter: string): Contact[] {
-    return this.filterContactsByText().filter((contact) => {
-      return contact.name.toLocaleLowerCase().startsWith(letter);
-    });
-  }
-}
+export class AppComponent {}
