@@ -14,6 +14,7 @@ interface Contact {
 
 import addressBook from './address-book.json';
 import { FormsModule } from '@angular/forms';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     DividerComponent,
     ContactComponent,
     FormsModule,
+    ContactFormComponent,
   ],
 })
 export class AppComponent {

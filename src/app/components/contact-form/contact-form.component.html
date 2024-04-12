@@ -1,0 +1,94 @@
+<app-container>
+  <header>
+    <section class="header-link">
+      <img src="../../../assets/logo.png" alt="" />
+    </section>
+    <section class="header-contact">
+      <img src="../../../assets/adicionar-contato.png" alt="" />
+      <h1>Adicionar contato</h1>
+    </section>
+  </header>
+
+  <form [formGroup]="contactForm" (ngSubmit)="saveContact()">
+    <label for="name">Nome</label>
+    <input
+      type="text"
+      id="name"
+      placeholder="Digite o nome do contato"
+      formControlName="name"
+    />
+
+    @if(contactForm.get('name')?.errors && contactForm.get('name')?.touched) {
+    <div class="error-message">Campo Obrigatório</div>
+    }
+
+    <label for="phone">Telefone</label>
+    <input
+      type="text"
+      id="phone"
+      placeholder="Digite o telefone do contato"
+      formControlName="phone"
+    />
+
+    @if(contactForm.get('phone')?.errors && contactForm.get('phone')?.touched) {
+    <div class="error-message">Campo Obrigatório</div>
+    }
+
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      placeholder="Digite o email do contato"
+      formControlName="email"
+    />
+
+    @if(contactForm.get('email')?.errors?.['required'] &&
+    contactForm.get('email')?.touched) {
+    <div class="error-message">Campo Obrigatório</div>
+    } @if(contactForm.get('email')?.errors?.['email'] &&
+    contactForm.get('email')?.touched) {
+    <div class="error-message">Formato de e-mail inválido</div>
+    }
+
+    <app-divider></app-divider>
+
+    <label for="birthday">Aniversario</label>
+    <input
+      type="date"
+      id="birthday"
+      placeholder="Data de nascimento"
+      formControlName="birthday"
+    />
+
+    <label for="social">Redes Sociais</label>
+    <div class="input-container">
+      <span class="span-http">http://</span>
+      <input
+        type="url"
+        id="social"
+        placeholder="Digite a url da página"
+        formControlName="social"
+      />
+    </div>
+
+    <textarea
+      type="text"
+      id="observations"
+      placeholder="Coloque observações nesse espaço. Exemplo: 'Instrutora da academia 'Nova Imagem', amiga da Júlia'."
+      formControlName="observations"
+    ></textarea>
+
+    <section class="btn">
+      <button (click)="cancel()" class="btn-cancel" type="button">
+        Cancelar
+      </button>
+      <button
+        [disabled]="contactForm.invalid"
+        [ngClass]="contactForm.valid ? 'btn-save' : 'btn-disabled'"
+        type="submit"
+      >
+        Salvar contato
+      </button>
+    </section>
+  </form>
+</app-container>
