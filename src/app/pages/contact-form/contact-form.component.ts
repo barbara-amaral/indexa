@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
-import { ContainerComponent } from '../../components/container/container.component';
-import { DividerComponent } from '../../components/divider/divider.component';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+
+import { ContainerComponent } from '../../components/container/container.component';
+import { DividerComponent } from '../../components/divider/divider.component';
 
 @Component({
   selector: 'app-contact-form',
@@ -23,10 +24,14 @@ import { RouterLink } from '@angular/router';
     RouterLink,
   ],
 })
-export class ContactFormComponent {
+export class ContactFormComponent implements OnInit {
   contactForm!: FormGroup;
 
-  constructor() {
+  ngOnInit() {
+    this.initializeForm();
+  }
+
+  initializeForm() {
     this.contactForm = new FormGroup({
       name: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
