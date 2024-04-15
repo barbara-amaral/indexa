@@ -34,7 +34,9 @@ export class ContactListComponent implements OnInit {
   constructor(private contactService: ContactService) {}
 
   ngOnInit() {
-    this.contacts = this.contactService.getContacts();
+    this.contactService.getContacts().subscribe((contactList) => {
+      this.contacts = contactList;
+    });
   }
 
   filterContactsByText(): Contact[] {

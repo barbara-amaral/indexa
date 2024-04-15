@@ -1,0 +1,22 @@
+{
+  "contatos": [
+    {
+      "name": "Maria",
+      "phone": "99 99999999",
+      "email": "maria@email.com",
+      "birthday": "1995-06-01",
+      "social": "",
+      "observations": "",
+      "id": 1
+    },
+    {
+      "name": "João",
+      "phone": "88 88888888",
+      "email": "joao@email.com",
+      "birthday": "1990-01-06",
+      "social": "",
+      "observations": "",
+      "id": 2
+    }
+  ]
+}

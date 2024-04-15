@@ -1,31 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Contact } from '../components/contact/contact';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactService {
-  private contacts: Contact[] = [
-    { id: 1, name: 'Ana', phone: '29 278869420', email: 'email@email.com' },
-  ];
+  private readonly API = 'http://localhost:3000/contatos';
 
-  constructor() {
-    const contactsLocalStorageString = localStorage.getItem('contacts');
-    const contactsLocalStorage = contactsLocalStorageString
-      ? JSON.parse(contactsLocalStorageString)
-      : null;
+  constructor(private http: HttpClient) {}
 
-    this.contacts = contactsLocalStorage;
-
-    localStorage.setItem('contacts', JSON.stringify(this.contacts));
+  getContacts(): Observable<Contact[]> {
+    return this.http.get<Contact[]>(this.API);
   }
 
-  getContacts() {
-    return this.contacts;
-  }
-
-  saveContact(contact: Contact) {
-    this.contacts.push(contact);
-    localStorage.setItem('contacts', JSON.stringify(this.contacts));
-  }
+  saveContact(contact: Contact) {}
 }
