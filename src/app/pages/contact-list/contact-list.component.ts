@@ -8,12 +8,7 @@ import { DividerComponent } from '../../components/divider/divider.component';
 import { ContactComponent } from '../../components/contact/contact.component';
 import { ContactFormComponent } from '../contact-form/contact-form.component';
 import { ContactService } from '../../services/contact.service';
-
-interface Contact {
-  id: number;
-  name: string;
-  phone: string;
-}
+import { Contact } from '../../components/contact/contact';
 
 @Component({
   selector: 'app-contact-list',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -10,6 +10,7 @@ import {
 
 import { ContainerComponent } from '../../components/container/container.component';
 import { DividerComponent } from '../../components/divider/divider.component';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -26,6 +27,8 @@ import { DividerComponent } from '../../components/divider/divider.component';
 })
 export class ContactFormComponent implements OnInit {
   contactForm!: FormGroup;
+
+  constructor(private contactService: ContactService, private router: Router) {}
 
   ngOnInit() {
     this.initializeForm();
@@ -44,11 +47,14 @@ export class ContactFormComponent implements OnInit {
 
   saveContact() {
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value);
+      const newContact = this.contactForm.value;
+      this.contactService.saveContact(newContact);
+      this.contactForm.reset();
+      this.router.navigateByUrl('/lista-contatos');
     }
   }
 
   cancel() {
-    console.log('cancelado');
+    this.contactForm.reset();
   }
 }
