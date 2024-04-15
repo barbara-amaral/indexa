@@ -1,0 +1,46 @@
+<app-container>
+  <header>
+    <section class="header-link">
+      <img src="../../../assets/logo.png" alt="" />
+      <div>
+        <button>
+          <img class="arrow" src="../../../assets/arrow-left.png" alt="" />
+          <a routerLink="/lista-contatos"> Voltar </a>
+        </button>
+      </div>
+    </section>
+    <section class="header-contact">
+      <img src="../../../assets/perfil-contato.png" alt="" />
+      <h1>Perfil do contato</h1>
+    </section>
+  </header>
+
+  <section class="profile">
+    <ul>
+      <li>
+        <i class="material-icons">call</i>
+        <strong>Telefone</strong>
+      </li>
+      <li>{{ contact.phone }}</li>
+      <li>
+        <i class="material-icons">mail</i>
+        <strong>Email</strong>
+      </li>
+      <li>{{ contact.email }}</li>
+      <li>
+        <i class="material-icons">event_available</i>
+        <strong>Data de nascimento</strong>
+      </li>
+      <li>{{ contact.birthday }}</li>
+      <li>
+        <i class="material-icons">language</i>
+        <strong>Redes sociais</strong>
+      </li>
+      <li>{{ contact.social }}</li>
+    </ul>
+    <div class="btn">
+      <button class="btn-delete">Excluir contato</button>
+      <button class="btn-edit">Editar</button>
+    </div>
+  </section>
+</app-container>

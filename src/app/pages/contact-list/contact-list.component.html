@@ -19,6 +19,10 @@
     {{ letter }}
   </app-divider>
   @for (contact of filterContactsByFirstLetter(letter); track contact.id) {
-  <app-contact [nome]="contact.name" [telefone]="contact.phone"></app-contact>
+  <app-contact
+    [nome]="contact.name"
+    [telefone]="contact.phone"
+    [id]="contact.id!"
+  ></app-contact>
   } }
 </app-container>
