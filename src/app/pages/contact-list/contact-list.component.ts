@@ -9,10 +9,13 @@ import { ContactComponent } from '../../components/contact/contact.component';
 import { ContactFormComponent } from '../contact-form/contact-form.component';
 import { ContactService } from '../../services/contact.service';
 import { Contact } from '../../components/contact/contact';
+import { ContactProfileComponent } from '../contact-profile/contact-profile.component';
 
 @Component({
   selector: 'app-contact-list',
   standalone: true,
+  templateUrl: './contact-list.component.html',
+  styleUrl: './contact-list.component.css',
   imports: [
     ContainerComponent,
     HeaderComponent,
@@ -22,8 +25,6 @@ import { Contact } from '../../components/contact/contact';
     ContactFormComponent,
     RouterLink,
   ],
-  templateUrl: './contact-list.component.html',
-  styleUrl: './contact-list.component.css',
 })
 export class ContactListComponent implements OnInit {
   alphabet: string = 'abcdefghijklmnopqrstuvwxyz';
