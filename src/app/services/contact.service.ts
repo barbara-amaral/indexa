@@ -15,5 +15,7 @@ export class ContactService {
     return this.http.get<Contact[]>(this.API);
   }
 
-  saveContact(contact: Contact) {}
+  saveContact(contact: Contact) {
+    return this.http.post<Contact>(this.API, contact);
+  }
 }
